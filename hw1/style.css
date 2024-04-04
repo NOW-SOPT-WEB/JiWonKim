@@ -85,6 +85,11 @@ main h2 {
     font-weight: bold;
 }
 
+.sidebar ul li a:hover {
+    width: 100%;
+    background-color: steelblue;
+}
+
 .section {
     margin: 10px 10px 10px 130px;
     grid-template-columns: repeat(5, 1fr);
@@ -114,12 +119,20 @@ main h2 {
     font-size: 18px;
 }
 
+.fa-heart:hover {
+    color: lightcoral;
+}
+
 .product-img {
     max-width: 100%;
     height: 150px;
     object-fit: cover;
     object-fit: contain;
     transition: 1s ease;
+}
+
+.product-img:hover {
+    transform: scale(0.9);
 }
 
 footer {
