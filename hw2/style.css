@@ -71,6 +71,29 @@ main {
     background-color: white;
     margin: 10px;
     padding: 0 10px 0 10px;
+    animation: move 1s ease infinite;
+}
+
+@keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(2px);
+    }
+
+    50% {
+        transform: translateX(-2px);
+    }
+
+    75% {
+        transform: translateX(2px);
+    }
+
+    1000% {
+        transform: translateX(0);
+    }
 }
 
 .item-text {
