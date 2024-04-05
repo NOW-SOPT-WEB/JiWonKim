@@ -61,6 +61,13 @@ main {
     padding: 0 10px 0 10px;
 }
 
+.item-text {
+    width: 160px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .item-btn {
     width: 30px;
     height: 30px;
