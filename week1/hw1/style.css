@@ -126,6 +126,7 @@ main h2 {
 
 .sidebar ul li a:hover {
     width: 100%;
+    color: black;
     background-color: steelblue;
 }
 
