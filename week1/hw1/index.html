@@ -5,23 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>김젼 1주차 과제</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <header>
-        <div class="logo">
-            <i class="fa fa-brands fa-apple"></i>
-        </div>
-        <h1>김젼 1주차 과제</h1>
+        <i class="fa-solid fa-brands fa-apple logo"></i>
+        <h1 class="title">김젼 1주차 과제</h1>
         <nav class="header_nav">
-            <div class="menu-bar">
-                <i class="fa fa-solid fa-bars"></i>
-            </div>
+            <i class="fa-solid fa-bars menu-bar"></i>
         </nav>
     </header>
     <main>
-        <div class="slider">
-            <ul class="slide n1">
+        <section class="slide__wrapper">
+            <ul class="slide__list n1">
                 <li><img src="class2/im1.jpeg" alt="망곰이1"></li>
                 <li><img src="class2/im2.jpeg" alt="망곰이2"></li>
                 <li><img src="class2/im3.jpeg" alt="망곰이3"></li>
@@ -30,7 +26,7 @@
                 <li><img src="class1/img2.jpeg" alt="초코2"></li>
                 <li><img src="class1/img3.jpeg" alt="초코3"></li>
             </ul>
-            <ul class="slide n2">
+            <ul class="slide__list n2">
                 <li><img src="class2/im1.jpeg" alt="망곰이1"></li>
                 <li><img src="class2/im2.jpeg" alt="망곰이2"></li>
                 <li><img src="class2/im3.jpeg" alt="망곰이3"></li>
@@ -39,9 +35,9 @@
                 <li><img src="class1/img2.jpeg" alt="초코2"></li>
                 <li><img src="class1/img3.jpeg" alt="초코3"></li>
             </ul>
-        </div>
+        </section>
         <nav class="sidebar">
-            <p>목록</p>
+            <h2 class="sidebar-name">목록</h2>
             <ul>
                 <li><a href="#section-name">전체</a></li>
                 <li><a href="#section1-name">분류1</a></li>
@@ -54,49 +50,49 @@
 
         <h2 id="section1-name">분류1</h2>
         <section class="section" id="section1">
-            <div class="category1">
-                <img src="class1/img1.jpeg" alt="category1" class="product-img">
+            <div class="item product1">
+                <img src="class1/img1.jpeg" alt="product1" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">초콜릿1</p>
                 <p class="product-price">1000원</p>
             </div>
-            <div class="category2">
+            <div class="item product2">
                 <img src="class1/img2.jpeg" alt="product2" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">초콜릿2</p>
                 <p class="product-price">1500원</p>
             </div>
-            <div class="category3">
+            <div class="item product3">
                 <img src="class1/img3.jpeg" alt="product3" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">초콜릿3</p>
                 <p class="product-price">10200원</p>
             </div>
-            <div class="category4">
+            <div class="item product4">
                 <img src="class1/img4.jpeg" alt="product4" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">초콜릿4</p>
                 <p class="product-price">1500원</p>
             </div>
-            <div class="category5">
-                <img src="class1/img5.jpeg" alt="category5" class="product-img">
+            <div class="item product5">
+                <img src="class1/img5.jpeg" alt="product5" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">초콜릿5</p>
                 <p class="product-price">1000원</p>
             </div>
-            <div class="category6">
+            <div class="item product6">
                 <img src="class1/img6.jpeg" alt="product6" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">초콜릿6</p>
                 <p class="product-price">1500원</p>
             </div>
-            <div class="category7">
+            <div class="item product7">
                 <img src="class1/img7.jpeg" alt="product7" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">초콜릿7</p>
                 <p class="product-price">2500원</p>
             </div>
-            <div class="category8">
+            <div class="item product8">
                 <img src="class1/img8.jpeg" alt="product8" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">초콜릿8</p>
@@ -106,25 +102,25 @@
 
         <h2 id="section2-name">분류2</h2>
         <section class="section" id="section2">
-            <div class="category1">
-                <img src="class2/im1.jpeg" alt="category1" class="product-img">
+            <div class="item product1">
+                <img src="class2/im1.jpeg" alt="product1" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">망곰이1</p>
                 <p class="product-price">1000원</p>
             </div>
-            <div class="category2">
+            <div class="item product2">
                 <img src="class2/im2.jpeg" alt="product2" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">망곰이2</p>
                 <p class="product-price">1500원</p>
             </div>
-            <div class="category3">
+            <div class="item product3">
                 <img src="class2/im3.jpeg" alt="product3" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">망곰이3</p>
                 <p class="product-price">10200원</p>
             </div>
-            <div class="category4">
+            <div class="item product4">
                 <img src="class2/im4.jpeg" alt="product4" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">망곰이4</p>
@@ -134,19 +130,19 @@
 
         <h2 id="section3-name">분류3</h2>
         <section class="section" id="section3">
-            <div class="category1">
-                <img src="class3/immg1.jpeg" alt="category1" class="product-img">
+            <div class="item product1">
+                <img src="class3/immg1.jpeg" alt="product1" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">암거나1</p>
                 <p class="product-price">1001324560원</p>
             </div>
-            <div class="category2">
+            <div class="item product2">
                 <img src="class3/immg2.png" alt="product2" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">암거나2</p>
                 <p class="product-price">152500원</p>
             </div>
-            <div class="category3">
+            <div class="item product3">
                 <img src="class3/immg3.jpg" alt="product3" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">암거나3</p>
