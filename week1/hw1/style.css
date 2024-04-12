@@ -190,7 +190,21 @@ main h2 {
 }
 
 .product-img:hover {
-    transform: scale(0.9);
+    animation: img-move 2s infinite;
+}
+
+@keyframes img-move {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 footer {
