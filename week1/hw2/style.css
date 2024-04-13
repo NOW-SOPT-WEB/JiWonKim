@@ -6,7 +6,7 @@ body {
     background: linear-gradient(#F2D1D1, white);
 }
 
-header {
+.title-section {
     display: flex;
     justify-content: center;
     height: 100px;
@@ -33,14 +33,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    column-gap: 20px;
 }
 
 .input-skin {
     height: 30px;
     width: 200px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    border: none;
     border-bottom: 1px solid gray;
     margin: 20px;
 }
@@ -64,7 +63,7 @@ main {
 
 .item {
     display: flex;
-    flex-flow: row;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     list-style: none;
