@@ -50,6 +50,37 @@ header {
     height: 100vh;
     background-color: steelblue;
     z-index: 2;
+    animation: homeModalOpen 0.5s forwards;
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+@keyframes homeModalOpen {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.home-modal.close {
+    animation: homeModalClose 0.5s forwards;
+}
+
+@keyframes homeModalClose {
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .closeHomeModalBtn {

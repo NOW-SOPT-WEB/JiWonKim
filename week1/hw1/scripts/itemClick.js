@@ -33,7 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     
     homeNavCloseBtn.addEventListener('click', () => {
-        homeNavModal.style.display = 'none'
+        homeNavModal.classList.add('close');
+
+        setTimeout(() => {
+            homeNavModal.style.display = 'none';
+            homeNavModal.classList.remove('close');
+        }, 500); 
     })    
 
     homeNavCartPage.addEventListener('click', () => {
