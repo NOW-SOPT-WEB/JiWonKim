@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="product-name">${item.name}</p>
                 <p class="product-price">${item.price}원</p>
             `;
+
+            itemElement.addEventListener('click', function() {
+                handleClick(item);
+            })
+
             sectionElement.appendChild(itemElement);
         });
 
