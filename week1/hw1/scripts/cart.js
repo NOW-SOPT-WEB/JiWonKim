@@ -5,6 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // console.log('cart: ', cart);
 
     const tableTitle = document.createElement('tr');
+
+    const checkBoxTitle = document.createElement('th');
+    const selectAllCheckBox = document.createElement('input');
+    selectAllCheckBox.type = 'checkbox';
+    selectAllCheckBox.addEventListener('change', function() {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.checked = selectAllCheckBox.checked;
+        });        
+    });
+    checkBoxTitle.appendChild(selectAllCheckBox);
+    tableTitle.appendChild(checkBoxTitle);
+
     const productImgTitle = document.createElement('th');
     productImgTitle.textContent = '상품 정보';
     tableTitle.appendChild(productImgTitle);
@@ -30,6 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     cart.forEach(item => {
         const cartItem = document.createElement('tr');
+
+        const itemCheckBox = document.createElement('td');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.dataset.item = JSON.stringify(item);
+        console.log(checkbox.dataset.item);
+        itemCheckBox.appendChild(checkbox);
+        cartItem.appendChild(itemCheckBox);
 
         const itemImg = document.createElement('td');
         const img = document.createElement('img');
@@ -64,6 +85,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         cartItems.appendChild(cartItem);
     });
+
+    const buyBtn = document.querySelector('.buyBtn');
+    const homeBtn = document.querySelector('.homeBtn');
+    const modalCloseBtn = document.querySelector('.close-modal-btn');
+
+    buyBtn.addEventListener('click', buyItems);
+
+    modalCloseBtn.addEventListener('click', () => {
+        closeModal();
+    });
+
+    homeBtn.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
+    
+
 });
 
 function removeItemFromCart(itemId) {
@@ -72,4 +109,68 @@ function removeItemFromCart(itemId) {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
 
     location.reload();
+}
+
+function openModal() {
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'block';
+}
+
+function closeModal() {
+    const modal = document.querySelector('.modal');
+    modal.style.display = 'none';
+}
+
+function buyItems() {
+    const purchaseList = document.querySelector(".item-list"); 
+    const totalPrice = document.getElementById("totalPrice");  
+    const finalBuyBtn = document.querySelector('.final-buy-btn');
+
+    const selectedItems = [];
+    let total = 0;
+
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    checkboxes.forEach(checkbox => {
+        if (checkbox.dataset.item && checkbox.dataset.item !== "undefined") {
+            try {
+                const item = JSON.parse(checkbox.dataset.item);
+                console.log('Checked item data:', item);
+                selectedItems.push(item);
+                total += item.price;
+            } catch (e) {
+                console.error('JSON parsing error for data-item:', checkbox.dataset.item, e);
+            }
+        } else {
+            console.error('Invalid or missing data-item on checked checkbox:', checkbox);
+        }
+    });
+
+    purchaseList.innerHTML = "";  
+    selectedItems.forEach(item => {
+        const listItem = document.createElement("li");
+        const img = document.createElement("img");
+        img.src = item.img; 
+        img.alt = item.name;
+        img.style.width = '50px';
+        img.style.height = '50px';
+
+        const text = document.createElement("span");
+        text.textContent = `${item.name} - ${item.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원`;  // Format price with commas
+
+        listItem.appendChild(img); 
+        listItem.appendChild(text);
+        purchaseList.appendChild(listItem);
+    });
+
+    totalPrice.textContent = `총 합계: ${total.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원`;  // Display formatted total price
+
+    openModal(); 
+
+    finalBuyBtn.addEventListener('click', () => {
+        selectedItems.forEach(item => {
+            removeItemFromCart(item.id);  
+        });
+        closeModal();  
+        alert('구매완료'); 
+    });
 }

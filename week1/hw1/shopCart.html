@@ -11,7 +11,7 @@
 <script src="scripts/shopList.js"></script>
 <script src="scripts/shopListRender.js"></script>
 <script src="scripts/index.js"></script>
-<body>
+<body class="cart">
     <header>
         <i class="fa-solid fa-brands fa-apple home-btn"></i>
         <h1 class="title">장바구니</h1>
@@ -23,8 +23,21 @@
         <section class="cart-table">
             <table class="cart-items"></table>
         </section>
+
+        <section class="btn-container">
+            <button type="button" class="buyBtn">구매하기</button>
+            <button type="button" class="homeBtn">홈으로</button>
+        </section>
           
         <script src="scripts/cart.js"></script>
+
+        <section class="modal">
+            <ul class="item-list"></ul>
+            <p id="totalPrice"></p>
+            <button type="button" class="close-modal-btn">x</button>
+            <button type="button" class="final-buy-btn">구매하기</button>
+        </section>
+
     </main>
     
 </body>
