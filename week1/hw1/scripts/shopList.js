@@ -1,6 +1,7 @@
 const SHOPPING_LIST = [
     {
         filter: 'section1',
+        listName: '초콜릿',
         items: [
             { id: 1, name: '초콜릿1', price: 1000, img: 'class1/img1.jpeg' },
             { id: 2, name: '초콜릿2', price: 1500, img: 'class1/img2.jpeg' },
@@ -14,6 +15,7 @@ const SHOPPING_LIST = [
     },
     {
         filter: 'section2',
+        listName: '망곰이',
         items: [
             { id: 1, name: '망곰이1', price: 1000, img: 'class2/im1.jpeg' },
             { id: 2, name: '망곰이2', price: 1500, img: 'class2/im2.jpeg' },
@@ -23,6 +25,7 @@ const SHOPPING_LIST = [
     },
     {
         filter: 'section3',
+        listName: '암거나',
         items: [
             { id: 1, name: '암거나1', price: 1001324560, img: 'class3/immg1.jpeg' },
             { id: 2, name: '암거나2', price: 152500, img: 'class3/immg2.png' },

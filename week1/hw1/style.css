@@ -217,3 +217,22 @@ footer {
     background-color: var(--main-color);
     text-align: center;
 }
+
+.cart-table {
+    margin: 50px;
+}
+
+.cart-items {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.cart-items tr {
+    height: 20px;
+}
+
+.cart-items th,
+.cart-items td {
+    border: 1px solid #000;
+    text-align: center;
+}
