@@ -117,14 +117,17 @@ main h2 {
     list-style-type: none;
 }
 
-.sidebar ul li a {
+.sidebar ul li button {
     padding: 0 0.625rem;
     text-decoration: none;
     color: white;
     font-weight: bold;
+    border: 0;
+    font-size: 1rem;
+    background-color: transparent;
 }
 
-.sidebar ul li a:hover {
+.sidebar ul li button:hover {
     width: 100%;
     color: black;
     background-color: steelblue;
