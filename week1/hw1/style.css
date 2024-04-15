@@ -8,6 +8,7 @@ body {
     padding: 0;
     margin: 0;
     width: 100%;
+    height: 100%;
 }
 
 header {
@@ -38,6 +39,34 @@ header {
     padding: 1.25rem;
     color: white;
     font-size: 1.875rem;
+}
+
+.home-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: fit-content;
+    height: 100vh;
+    background-color: steelblue;
+    z-index: 2;
+}
+
+.closeHomeModalBtn {
+    font-size: 20px;
+}
+
+.modal-container {
+    padding: 20px;
+}
+
+.modal-nav {
+    color: white;
+}
+
+.modal-nav:hover {
+    color: #000;
+    background-color: var(--main-color);
 }
 
 main {

@@ -20,3 +20,24 @@ function handleClick(item) {
         console.log('취소');
     }
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const homeNavBtn = document.querySelector('.menu-bar'); 
+    const homeNavModal = document.querySelector('.home-modal'); 
+    const homeNavCloseBtn = document.querySelector('.closeHomeModalBtn'); 
+    const homeNavCartPage = document.querySelector('.cart-page'); 
+
+    homeNavBtn.addEventListener('click', () => {
+        homeNavModal.style.display = 'block'
+    })
+    
+    homeNavCloseBtn.addEventListener('click', () => {
+        homeNavModal.style.display = 'none'
+    })    
+
+    homeNavCartPage.addEventListener('click', () => {
+        window.location.href = 'shopCart.html';
+    })    
+
+});
