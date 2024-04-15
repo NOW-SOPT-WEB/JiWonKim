@@ -220,6 +220,8 @@ footer {
 
 .cart-table {
     margin: 50px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 .cart-items {

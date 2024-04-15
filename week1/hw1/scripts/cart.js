@@ -45,7 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cartItem.appendChild(itemName);
 
         const itemPrice = document.createElement('td');
-        itemPrice.textContent = item.price + '원';
+        const price = item.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        itemPrice.textContent = price + '원';
         cartItem.appendChild(itemPrice);
 
         const itemCategory = document.createElement('td');
@@ -66,5 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function removeItemFromCart(itemId) {
-    console.log('removeItem')
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const updatedCart = cart.filter(item => item.id !== itemId);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+    location.reload();
 }

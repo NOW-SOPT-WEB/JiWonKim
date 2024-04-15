@@ -17,19 +17,19 @@ const SHOPPING_LIST = [
         filter: 'section2',
         listName: '망곰이',
         items: [
-            { id: 1, name: '망곰이1', price: 1000, img: 'class2/im1.jpeg' },
-            { id: 2, name: '망곰이2', price: 1500, img: 'class2/im2.jpeg' },
-            { id: 3, name: '망곰이3', price: 10200, img: 'class2/im3.jpeg' },
-            { id: 4, name: '망곰이4', price: 1500, img: 'class2/im4.jpeg' }
+            { id: 9, name: '망곰이1', price: 1000, img: 'class2/im1.jpeg' },
+            { id: 10, name: '망곰이2', price: 1500, img: 'class2/im2.jpeg' },
+            { id: 11, name: '망곰이3', price: 10200, img: 'class2/im3.jpeg' },
+            { id: 12, name: '망곰이4', price: 1500, img: 'class2/im4.jpeg' }
         ]
     },
     {
         filter: 'section3',
         listName: '암거나',
         items: [
-            { id: 1, name: '암거나1', price: 1001324560, img: 'class3/immg1.jpeg' },
-            { id: 2, name: '암거나2', price: 152500, img: 'class3/immg2.png' },
-            { id: 3, name: '암거나3', price: 1020880, img: 'class3/immg3.jpg' }
+            { id: 13, name: '암거나1', price: 1001324560, img: 'class3/immg1.jpeg' },
+            { id: 14, name: '암거나2', price: 152500, img: 'class3/immg2.png' },
+            { id: 15, name: '암거나3', price: 1020880, img: 'class3/immg3.jpg' }
         ]
     }
 ];
