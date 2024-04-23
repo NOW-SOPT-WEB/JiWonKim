@@ -1,7 +1,7 @@
 // console.log('cart.js 들어옴')
 document.addEventListener('DOMContentLoaded', function() {
     const cartItems = document.querySelector('.cart-items');
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cart = JSON.parse(localStorage.getItem('cart') ?? '[]');
     // console.log('cart: ', cart);
 
     const tableTitle = document.createElement('tr');
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cartItem.appendChild(itemName);
 
         const itemPrice = document.createElement('td');
-        const price = item.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        const price = item.price.toLocaleString();
         itemPrice.textContent = price + '원';
         cartItem.appendChild(itemPrice);
 
@@ -92,9 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     buyBtn.addEventListener('click', buyItems);
 
-    modalCloseBtn.addEventListener('click', () => {
-        closeModal();
-    });
+    modalCloseBtn.addEventListener('click', closeModal);
 
     homeBtn.addEventListener('click', () => {
         window.location.href = 'index.html';
@@ -155,14 +153,14 @@ function buyItems() {
         img.style.height = '50px';
 
         const text = document.createElement("span");
-        text.textContent = `${item.name} - ${item.price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원`;  // Format price with commas
+        text.textContent = `${item.name} - ${item.price.toLocaleString()}원`; 
 
         listItem.appendChild(img); 
         listItem.appendChild(text);
         purchaseList.appendChild(listItem);
     });
 
-    totalPrice.textContent = `총 합계: ${total.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원`;  // Display formatted total price
+    totalPrice.textContent = `총 합계: ${total.toLocaleString()}원`;
 
     openModal(); 
 

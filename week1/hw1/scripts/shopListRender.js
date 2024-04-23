@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <img src="${item.img}" alt="${item.name}" class="product-img">
                 <i class="fa fa-heart"></i>
                 <p class="product-name">${item.name}</p>
-                <p class="product-price">${item.price}원</p>
+                <p class="product-price">${item.price.toLocaleString()}원</p>
             `;
             item.listName = section.listName;
 
