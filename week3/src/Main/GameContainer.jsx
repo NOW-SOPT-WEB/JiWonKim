@@ -118,12 +118,19 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
             ))}
         </S.GameLevelBtnContainer>
         <S.CardContainer>
-             {finalArr.map((card, index) => (
-                 <S.StyleCard key={index} onClick={() => handleCardClick(card, index)}>
-                     {card.isFlipped ? <S.CardImg src={card.backImg} alt="backImg of Card" /> : <S.CardImg src="src/assets/frontImg.png" alt="frontImg of Card" />}
-                 </S.StyleCard>
-             ))}
-         </S.CardContainer>
+            {finalArr.map((card, index) => (
+                <S.StyleCard key={index} onClick={() => handleCardClick(card, index)}>
+                    <S.FlipCardInner className={card.isFlipped ?'flip' : ''}>
+                        <S.CardFront>
+                            <S.CardImg src="src/assets/frontImg.png" alt="frontImg of Card" />
+                        </S.CardFront>
+                        <S.CardBack>
+                            <S.CardImg src={card.backImg} alt="backImg of Card" /> 
+                        </S.CardBack>
+                    </S.FlipCardInner>
+                </S.StyleCard>
+            ))}
+        </S.CardContainer>
         </>
         
     )

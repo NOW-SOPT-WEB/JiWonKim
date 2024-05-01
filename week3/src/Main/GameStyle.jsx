@@ -33,13 +33,40 @@ export const StyleCard = styled.div`
     width: 100px;
     height: 150px;
     display: flex;
+    margin: 20px;
     justify-content: center;
     align-items: center;
-    margin: 20px;
     overflow: hidden;
-    background-color: ${props => props.theme.colors.mainColor};
-    border: 2px solid ${props => props.isFlipped ? 'black' : 'lightgray'};
+`;
+
+export const FlipCardInner = styled.div`
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    
+    &.flip {
+        transform: rotateY(180deg);
+    }
+`;
+
+export const CardFront = styled.div`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 2px solid lightgray;
     border-radius: 10px;
+`;
+
+export const CardBack = styled(CardFront)`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+    border-color: black;
 `;
 
 export const ModalStyle = styled.div`
