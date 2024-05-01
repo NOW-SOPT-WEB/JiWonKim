@@ -48,10 +48,12 @@ export const ModalStyle = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: transparent;
+    background-color: ${props => props.theme.colors.translucency};
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
     font-size: 50px;
 `;
 
