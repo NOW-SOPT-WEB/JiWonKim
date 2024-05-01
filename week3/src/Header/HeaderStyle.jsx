@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const HeaderContainer = styled.div`
     width: 100%;
     height: auto;
+    padding-top: 10px;
     background-color: ${props => props.theme.colors.lightColor};
 `
 
@@ -19,20 +20,20 @@ export const GameTitle = styled.h1`
 
 export const ScoreContainer = styled.div`
     width: 100%;
-    height: 100px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
 export const GameScore = styled.h3`
-    margin: 10px;
-    font-size: 30px;
+    margin: 0px 10px 20px 10px;
+    font-size: 40px;
     color: ${props => props.theme.colors.mainColor};
 `;
 
 export const GameLevelBtn = styled.button`
-    top: 20px;
+    top: 30px;
     right: 20px;
     position: absolute;
     width: 100px;

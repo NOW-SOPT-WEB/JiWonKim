@@ -5,13 +5,8 @@ import gameLevel from "./LevelData";
 import * as S from './GameStyle'
 
 
-function GameContainer() {
-    const [currentLevel, setCurrentLevel] = useState(gameLevel[0].level);
+function GameContainer({ currentLevel, handleLevelChange }) {
     const [finalArr, setFinalArr] = useState([]);
-
-    const handelLavelChange = (level) => {
-        setCurrentLevel(level);
-    }
 
     useEffect(() => {
         const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
@@ -32,7 +27,7 @@ function GameContainer() {
         <>
         <S.GameLevelBtnContainer>
             {gameLevel.map(item => (
-                <S.GameLevelBtn key={item.level} onClick={() => handelLavelChange(item.level)}
+                <S.GameLevelBtn key={item.level} onClick={() => handleLevelChange(item.level)}
                 isActive={currentLevel === item.level}>
                 {item.level}
                 </S.GameLevelBtn>

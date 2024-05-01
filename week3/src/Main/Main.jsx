@@ -11,10 +11,10 @@ const MainContainer = styled.div`
 `;
 
 
-function Main() {
+function Main({ currentLevel, handleLevelChange }) {
     return (
         <MainContainer>
-            <GameContainer/>
+            <GameContainer currentLevel={currentLevel} handleLevelChange={handleLevelChange} />
         </MainContainer>
     )
 }

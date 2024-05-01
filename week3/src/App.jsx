@@ -1,17 +1,28 @@
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './style/GlobalStyle';
 import { theme } from './style/theme';
+import { useState } from "react";
 import Header from './Header/Header.jsx';
 import Main from './Main/Main.jsx';
+import gameLevel from './Main/LevelData.jsx';
 
 
 function App() {
+  const [currentLevel, setCurrentLevel] = useState(gameLevel[0].level);
+  const [maxScore, setMaxScore] = useState(gameLevel[0].cardNum);
+
+  const handleLevelChange = (level) => {
+    setCurrentLevel(level);
+    const levelData = gameLevel.find(item => item.level === level);
+    setMaxScore(levelData.cardNum);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <div>
-        <Header/>
-        <Main/>
+        <Header currentScore={0} maxScore={maxScore} />
+        <Main currentLevel={currentLevel} handleLevelChange={handleLevelChange} />
       </div>
       
     </ThemeProvider>
