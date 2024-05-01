@@ -4,7 +4,7 @@ import gameLevel from "./LevelData";
 import * as S from './GameStyle'
 
 
-function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, currentScore, setCurrentScore, maxScore, reset}) {
+function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, currentScore, setCurrentScore, maxScore, setMaxScore, reset}) {
     const [finalArr, setFinalArr] = useState([]);
     const [selectedCards, setSelectedCards] = useState([]);
     const [showModal, setShowModal] = useState(false);
@@ -16,6 +16,7 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
     const gameReset = () => {
         setShowModal(false); 
         setCurrentLevel(gameLevel[0].level);
+        setMaxScore(gameLevel[0].cardNum);
         setCurrentScore(0);
 
         const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
@@ -88,7 +89,7 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
                     return item;
                 });
                 setFinalArr(resetCard);
-            }, 100);
+            }, 500);
         }
         setSelectedCards([]); 
 
@@ -117,12 +118,12 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
             ))}
         </S.GameLevelBtnContainer>
         <S.CardContainer>
-            {finalArr.map((card, index) => (
-                <S.StyleCard key={index} onClick={() => handleCardClick(card, index)}>
-                    {card.isFlipped ? <S.CardImg src={card.backImg} alt="backImg of Card" /> : <S.CardImg src="src/assets/frontImg.png" alt="frontImg of Card" />}
-                </S.StyleCard>
-            ))}
-        </S.CardContainer>
+             {finalArr.map((card, index) => (
+                 <S.StyleCard key={index} onClick={() => handleCardClick(card, index)}>
+                     {card.isFlipped ? <S.CardImg src={card.backImg} alt="backImg of Card" /> : <S.CardImg src="src/assets/frontImg.png" alt="frontImg of Card" />}
+                 </S.StyleCard>
+             ))}
+         </S.CardContainer>
         </>
         
     )

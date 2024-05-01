@@ -28,7 +28,7 @@ function App() {
       <GlobalStyle />
       <div>
         <Header currentScore={currentScore} maxScore={maxScore} clickedReset={clickedReset} />
-        <Main currentLevel={currentLevel} setCurrentLevel={setCurrentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} reset={reset}/>
+        <Main currentLevel={currentLevel} setCurrentLevel={setCurrentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} setMaxScore={setMaxScore} reset={reset}/>
       </div>
       
     </ThemeProvider>
