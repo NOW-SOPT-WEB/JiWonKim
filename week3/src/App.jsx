@@ -23,7 +23,7 @@ function App() {
       <GlobalStyle />
       <div>
         <Header currentScore={currentScore} maxScore={maxScore} />
-        <Main currentLevel={currentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} />
+        <Main currentLevel={currentLevel} setCurrentLevel={setCurrentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} />
       </div>
       
     </ThemeProvider>

@@ -41,3 +41,28 @@ export const StyleCard = styled.div`
     border: 2px solid ${props => props.isFlipped ? 'black' : 'lightgray'};
     border-radius: 10px;
 `;
+
+export const ModalStyle = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+`;
+
+export const ModalContentStyle = styled.div`
+    background: ${props => props.theme.colors.lightColor};
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;  
+    height: 30%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+`;

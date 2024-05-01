@@ -1,21 +1,12 @@
-import styled from "styled-components";
+import * as S from './MainStyle'
 import GameContainer from "./GameContainer";
 
-const MainContainer = styled.div`
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`;
 
-
-function Main({ currentLevel, handleLevelChange, currentScore, setCurrentScore, maxScore }) {
+function Main({ currentLevel, setCurrentLevel, handleLevelChange, currentScore, setCurrentScore, maxScore }) {
     return (
-        <MainContainer>
-            <GameContainer currentLevel={currentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} />
-        </MainContainer>
+        <S.MainContainer>
+            <GameContainer currentLevel={currentLevel} setCurrentLevel={setCurrentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} />
+        </S.MainContainer>
     )
 }
 

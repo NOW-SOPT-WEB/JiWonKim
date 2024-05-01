@@ -1,14 +1,38 @@
 import { useEffect, useState } from "react";
-import Card from "./Card/Card";
 import cardData from "./Card/CardData";
 import gameLevel from "./LevelData";
 import * as S from './GameStyle'
 
 
-function GameContainer({ currentLevel, handleLevelChange, currentScore, setCurrentScore, maxScore }) {
+function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, currentScore, setCurrentScore, maxScore }) {
     const [finalArr, setFinalArr] = useState([]);
     const [selectedCards, setSelectedCards] = useState([]);
-    // const [isFlipped, setIsFlipped] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+
+    const gameReset = () => {
+        setShowModal(false); 
+        setCurrentLevel(gameLevel[0].level);
+        setCurrentScore(0);
+        
+        const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
+        console.log(currentLevel, cardNum);
+        let randomArr = cardData.sort(() => Math.random() - 0.5);
+        let selectRamdomArr = randomArr.slice(0, cardNum);
+        let finalArr = [...selectRamdomArr, ...selectRamdomArr].sort(() => Math.random() - 0.5);
+        console.log(finalArr)
+
+        finalArr.forEach(card => {
+            card.isFlipped = false;
+        });
+
+        setFinalArr(finalArr);
+    };
+
+    useEffect(() => {
+        if (currentScore === maxScore) {
+            setShowModal(true);  
+        }
+    }, [currentScore, maxScore]);
 
     useEffect(() => {
         const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
@@ -72,6 +96,14 @@ function GameContainer({ currentLevel, handleLevelChange, currentScore, setCurre
 
     return (
         <>
+        {showModal && (
+        <S.ModalStyle>
+            <S.ModalContentStyle>
+                게임 성공!
+                <button onClick={gameReset}>닫기</button>
+            </S.ModalContentStyle>
+        </S.ModalStyle> 
+        )}
         <S.GameLevelBtnContainer>
             {gameLevel.map(item => (
                 <S.GameLevelBtn key={item.level} onClick={() => handleLevelChange(item.level)}
