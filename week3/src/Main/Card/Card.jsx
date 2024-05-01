@@ -1,18 +1,5 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
-
-const StyleCard = styled.div`
-    width: 100px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    overflow: hidden;
-    background-color: ${props => props.theme.colors.mainColor};
-    border: 2px solid ${props => props.isFlipped ? 'black' : 'lightgray'};
-    border-radius: 10px;
-`;
+import * as S from './CardStyle'
 
 
 function Card({ front, back, currentLevel }) {
@@ -27,9 +14,9 @@ function Card({ front, back, currentLevel }) {
     }
 
     return (
-        <StyleCard isFlipped={isFlipped} onClick={handleCard}>
+        <S.StyleCard isFlipped={isFlipped} onClick={handleCard}>
             {isFlipped ? back : front }
-        </StyleCard>
+        </S.StyleCard>
     )
 }
 
