@@ -11,6 +11,11 @@ function App() {
   const [currentLevel, setCurrentLevel] = useState(gameLevel[0].level);
   const [currentScore, setCurrentScore] = useState(0);
   const [maxScore, setMaxScore] = useState(gameLevel[0].cardNum);
+  const [reset, setReset] = useState(false);
+
+  const clickedReset = () => {
+    setReset(prev => !prev); // 기존 상태를 반전시켜 변경을 유발
+};
 
   const handleLevelChange = (level) => {
     setCurrentLevel(level);
@@ -22,8 +27,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <div>
-        <Header currentScore={currentScore} maxScore={maxScore} />
-        <Main currentLevel={currentLevel} setCurrentLevel={setCurrentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} />
+        <Header currentScore={currentScore} maxScore={maxScore} clickedReset={clickedReset} />
+        <Main currentLevel={currentLevel} setCurrentLevel={setCurrentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} reset={reset}/>
       </div>
       
     </ThemeProvider>

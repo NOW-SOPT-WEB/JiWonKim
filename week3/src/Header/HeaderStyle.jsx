@@ -32,7 +32,7 @@ export const GameScore = styled.h3`
     color: ${props => props.theme.colors.mainColor};
 `;
 
-export const GameLevelBtn = styled.button`
+export const GameResetBtn = styled.button`
     top: 30px;
     right: 20px;
     position: absolute;

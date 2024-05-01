@@ -4,16 +4,20 @@ import gameLevel from "./LevelData";
 import * as S from './GameStyle'
 
 
-function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, currentScore, setCurrentScore, maxScore }) {
+function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, currentScore, setCurrentScore, maxScore, reset}) {
     const [finalArr, setFinalArr] = useState([]);
     const [selectedCards, setSelectedCards] = useState([]);
     const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        gameReset(); 
+    }, [reset]);
 
     const gameReset = () => {
         setShowModal(false); 
         setCurrentLevel(gameLevel[0].level);
         setCurrentScore(0);
-        
+
         const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
         console.log(currentLevel, cardNum);
         let randomArr = cardData.sort(() => Math.random() - 0.5);
