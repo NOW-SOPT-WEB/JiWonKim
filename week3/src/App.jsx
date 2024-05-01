@@ -9,6 +9,7 @@ import gameLevel from './Main/LevelData.jsx';
 
 function App() {
   const [currentLevel, setCurrentLevel] = useState(gameLevel[0].level);
+  const [currentScore, setCurrentScore] = useState(0);
   const [maxScore, setMaxScore] = useState(gameLevel[0].cardNum);
 
   const handleLevelChange = (level) => {
@@ -21,8 +22,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <div>
-        <Header currentScore={0} maxScore={maxScore} />
-        <Main currentLevel={currentLevel} handleLevelChange={handleLevelChange} />
+        <Header currentScore={currentScore} maxScore={maxScore} />
+        <Main currentLevel={currentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} />
       </div>
       
     </ThemeProvider>

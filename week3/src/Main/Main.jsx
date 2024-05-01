@@ -11,10 +11,10 @@ const MainContainer = styled.div`
 `;
 
 
-function Main({ currentLevel, handleLevelChange }) {
+function Main({ currentLevel, handleLevelChange, currentScore, setCurrentScore, maxScore }) {
     return (
         <MainContainer>
-            <GameContainer currentLevel={currentLevel} handleLevelChange={handleLevelChange} />
+            <GameContainer currentLevel={currentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} />
         </MainContainer>
     )
 }
