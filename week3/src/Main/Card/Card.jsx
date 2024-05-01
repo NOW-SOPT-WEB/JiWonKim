@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const StyleCard = styled.div`
@@ -10,20 +10,24 @@ const StyleCard = styled.div`
     margin: 20px;
     overflow: hidden;
     background-color: ${props => props.theme.colors.mainColor};
-    border: 2px solid lightgray;
+    border: 2px solid ${props => props.isFlipped ? 'black' : 'lightgray'};
     border-radius: 10px;
 `;
 
 
-function Card({ front, back }) {
+function Card({ front, back, currentLevel }) {
     const [isFlipped, setIsFlipped] = useState(false);
+
+    useEffect(() => {
+        setIsFlipped(false);
+    }, [currentLevel]);
 
     const handleCard = () => {
         setIsFlipped(prev => !prev)
     }
 
     return (
-        <StyleCard onClick={handleCard}>
+        <StyleCard isFlipped={isFlipped} onClick={handleCard}>
             {isFlipped ? back : front }
         </StyleCard>
     )

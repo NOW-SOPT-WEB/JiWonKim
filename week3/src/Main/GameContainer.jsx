@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./Card/Card";
 import styled from "styled-components";
 
@@ -51,10 +51,26 @@ const CardImg = styled.img`
 
 function GameContainer() {
     const [currentLevel, setCurrentLevel] = useState(gameLevel[0].level);
+    const [finalArr, setFinalArr] = useState([]);
 
     const handelLavelChange = (level) => {
         setCurrentLevel(level);
     }
+
+    useEffect(() => {
+        const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
+        console.log(currentLevel, cardNum);
+        let randomArr = cardData.sort(() => Math.random() - 0.5);
+        // console.log(randomArr)
+        let selectRamdomArr = randomArr.slice(0, cardNum);
+        // console.log(selectRamdomArr)
+
+        let finalArr = [...selectRamdomArr, ...selectRamdomArr].sort(() => Math.random() - 0.5);
+        console.log(finalArr)
+
+        setFinalArr(finalArr);
+    }, [currentLevel]);
+
 
     return (
         <>
@@ -67,11 +83,12 @@ function GameContainer() {
             ))}
         </GameLevelBtnContainer>
         <CardContainer>
-            {cardData.map(card => (
+            {finalArr.map((card) => (
                 <Card
-                    key={card.id}
+                    key={card.index}
                     front={<CardImg src="src/assets/frontImg.png" alt="frontImg of Card" />}
                     back={<CardImg src={card.backImg} alt="backImg of Card" />}
+                    currentLevel={currentLevel}
                 />
             ))}
         </CardContainer>
