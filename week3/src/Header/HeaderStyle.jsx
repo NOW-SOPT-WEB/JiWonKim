@@ -26,7 +26,7 @@ export const ScoreContainer = styled.div`
     align-items: center;
 `;
 
-export const GameScore = styled.h3`
+export const GameScoreWrapper = styled.h3`
     margin: 0 0.625rem 1.25rem 0.625rem;
     font-size: 2.5rem;
     color: ${({theme}) => theme.colors.mainColor};
