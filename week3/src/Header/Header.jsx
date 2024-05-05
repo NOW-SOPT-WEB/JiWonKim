@@ -1,12 +1,12 @@
 import * as S from './HeaderStyle'
 
-function Header({ currentScore, maxScore, clickedReset }) {
+function Header({ currentScore, maxScore, handleReset }) {
     return (
         <S.HeaderContainer>
             <S.GameTitle>
                 카드 뒤집기 게임
             </S.GameTitle>
-            <S.GameResetBtn onClick={clickedReset}>Reset</S.GameResetBtn>
+            <S.GameResetBtn onClick={handleReset}>Reset</S.GameResetBtn>
             <S.ScoreContainer>
                 <S.GameScore type="currentScore">{currentScore}</S.GameScore>
                 <S.GameScore type="divider">/</S.GameScore>

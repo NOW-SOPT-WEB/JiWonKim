@@ -1,34 +1,37 @@
 import { useEffect, useState } from "react";
+import Modal from './Modal/Modal'
+import GameLevelButtons from "./GameLevelButton/GameLevelBtn";
+import CardContainer from "./Card/CardContainer";
 import cardData from "./Card/CardData";
 import gameLevel from "./LevelData";
 import * as S from './GameStyle'
 
-
-function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, currentScore, setCurrentScore, maxScore, setMaxScore, reset}) {
+function GameContainer({ currentLevel, handleCurrentLevel, handleLevelChange, currentScore, handleCurrentScore, maxScore, handleMaxScore, reset}) {
     const [finalArr, setFinalArr] = useState([]);
     const [selectedCards, setSelectedCards] = useState([]);
     const [showModal, setShowModal] = useState(false);
+
+    const getCardSets = () => {
+        const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
+        const randomArr = cardData.sort(() => Math.random() - 0.5);
+        const selectRamdomArr = randomArr.slice(0, cardNum);
+        const finalArr = [...selectRamdomArr, ...selectRamdomArr].sort(() => Math.random() - 0.5);
+        finalArr.forEach(card => {
+            card.isFlipped = false;
+        });
+        return finalArr;
+    };
 
     useEffect(() => {
         gameReset(); 
     }, [reset]);
 
     const gameReset = () => {
-        setShowModal(false); 
-        setCurrentLevel(gameLevel[0].level);
-        setMaxScore(gameLevel[0].cardNum);
-        setCurrentScore(0);
-
-        const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
-        let randomArr = cardData.sort(() => Math.random() - 0.5);
-        let selectRamdomArr = randomArr.slice(0, cardNum);
-        let finalArr = [...selectRamdomArr, ...selectRamdomArr].sort(() => Math.random() - 0.5);
-
-        finalArr.forEach(card => {
-            card.isFlipped = false;
-        });
-
-        setFinalArr(finalArr);
+        setShowModal(false);
+        handleCurrentLevel(gameLevel[0].level);
+        handleMaxScore(gameLevel[0].cardNum);
+        handleCurrentScore(0);
+        setFinalArr(getCardSets());
     };
 
     useEffect(() => {
@@ -38,28 +41,11 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
     }, [currentScore, maxScore]);
 
     useEffect(() => {
-        const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
-        let randomArr = cardData.sort(() => Math.random() - 0.5);
-        let selectRamdomArr = randomArr.slice(0, cardNum);
-        let finalArr = [...selectRamdomArr, ...selectRamdomArr].sort(() => Math.random() - 0.5);
-
-        finalArr.forEach(card => {
-            card.isFlipped = false;
-        });
-
-        setFinalArr(finalArr);
-        setCurrentScore(0);
+        setFinalArr(getCardSets());
+        handleCurrentScore(0);
     }, [currentLevel]);
 
-    const handleCardClick = (card, index) => {
-        if (selectedCards.length === 2) return;
-
-
-        const clicked = finalArr[index]
-        const clickedStatus = !clicked.isFlipped;
-        const newSelectedCards = [...selectedCards, {...clicked, index, isFlipped: clickedStatus }];
-        setSelectedCards(newSelectedCards);
-
+    const getFinalArr = (index) => {
         const updatedFinalArr = finalArr.map((item, idx) => {
             if (idx === index) {
                 return { ...item, isFlipped: !item.isFlipped };
@@ -68,10 +54,11 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
         });
 
         setFinalArr(updatedFinalArr);
+    }
 
-
+    const getMatch = (newSelectedCards) => {
         if (newSelectedCards[0].id === newSelectedCards[1].id) {
-            setCurrentScore(currentScore + 1);
+            handleCurrentScore(currentScore + 1);
         } else {
             setTimeout(() => {
                 const resetCard = finalArr.map(item => {
@@ -84,48 +71,27 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
             }, 500);
         }
         setSelectedCards([]); 
+    }
 
+    const handleCardClick = (card, index) => {
+        if (selectedCards.length === 2) return;
+
+        const clicked = finalArr[index]
+        const clickedStatus = !clicked.isFlipped;
+        const newSelectedCards = [...selectedCards, {...clicked, index, isFlipped: clickedStatus }];
+        setSelectedCards(newSelectedCards);
+
+        getFinalArr(index)
+        getMatch(newSelectedCards)
     };
 
-    useEffect(() => {
-    }, [selectedCards]);
-
     return (
-        <>
-        {showModal && (
-        <S.ModalStyle>
-            <S.ModalContentStyle>
-                게임 성공!
-                <button onClick={gameReset}>닫기</button>
-            </S.ModalContentStyle>
-        </S.ModalStyle> 
-        )}
-        <S.GameLevelBtnContainer>
-            {gameLevel.map(item => (
-                <S.GameLevelBtn key={item.level} onClick={() => handleLevelChange(item.level)}
-                isActive={currentLevel === item.level}>
-                {item.level}
-                </S.GameLevelBtn>
-            ))}
-        </S.GameLevelBtnContainer>
-        <S.CardContainer>
-            {finalArr.map((card, index) => (
-                <S.StyleCard key={index} onClick={() => handleCardClick(card, index)}>
-                    <S.FlipCardInner className={card.isFlipped ?'flip' : ''}>
-                        <S.CardFront>
-                            <S.CardImg src="src/assets/frontImg.png" alt="frontImg of Card" />
-                        </S.CardFront>
-                        <S.CardBack>
-                            <S.CardImg src={card.backImg} alt="backImg of Card" /> 
-                        </S.CardBack>
-                    </S.FlipCardInner>
-                </S.StyleCard>
-            ))}
-        </S.CardContainer>
-        </>
-        
+        <S.MainContainer>
+            <Modal showModal={showModal} onClose={gameReset} />
+            <GameLevelButtons gameLevel={gameLevel} currentLevel={currentLevel} onLevelChange={handleLevelChange} />
+            <CardContainer cards={finalArr} onCardClick={handleCardClick} />
+        </S.MainContainer>
     )
-
 }
 
 export default GameContainer;
