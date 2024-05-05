@@ -75,7 +75,7 @@ export const ModalStyle = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${props => props.theme.colors.translucency};
+    background-color: ${({theme}) => theme.colors.translucency};
     backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
@@ -85,7 +85,7 @@ export const ModalStyle = styled.div`
 `;
 
 export const ModalContentStyle = styled.div`
-    background: ${props => props.theme.colors.lightColor};
+    background: ${({theme}) => theme.colors.lightColor};
     padding: 20px;
     border-radius: 10px;
     text-align: center;

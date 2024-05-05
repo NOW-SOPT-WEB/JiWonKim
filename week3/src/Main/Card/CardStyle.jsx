@@ -8,7 +8,7 @@ export const StyleCard = styled.div`
     align-items: center;
     margin: 20px;
     overflow: hidden;
-    background-color: ${props => props.theme.colors.mainColor};
+    background-color: ${({theme}) => theme.colors.mainColor};
     border: 2px solid ${props => props.isFlipped ? 'black' : 'lightgray'};
     border-radius: 10px;
 `;

@@ -20,11 +20,9 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
         setCurrentScore(0);
 
         const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
-        console.log(currentLevel, cardNum);
         let randomArr = cardData.sort(() => Math.random() - 0.5);
         let selectRamdomArr = randomArr.slice(0, cardNum);
         let finalArr = [...selectRamdomArr, ...selectRamdomArr].sort(() => Math.random() - 0.5);
-        console.log(finalArr)
 
         finalArr.forEach(card => {
             card.isFlipped = false;
@@ -41,11 +39,9 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
 
     useEffect(() => {
         const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
-        console.log(currentLevel, cardNum);
         let randomArr = cardData.sort(() => Math.random() - 0.5);
         let selectRamdomArr = randomArr.slice(0, cardNum);
         let finalArr = [...selectRamdomArr, ...selectRamdomArr].sort(() => Math.random() - 0.5);
-        console.log(finalArr)
 
         finalArr.forEach(card => {
             card.isFlipped = false;
@@ -53,7 +49,6 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
 
         setFinalArr(finalArr);
         setCurrentScore(0);
-        // console.log('finalArr: ', finalArr)
     }, [currentLevel]);
 
     const handleCardClick = (card, index) => {
@@ -62,7 +57,6 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
 
         const clicked = finalArr[index]
         const clickedStatus = !clicked.isFlipped;
-        console.log('clicked: ', clicked.index)
         const newSelectedCards = [...selectedCards, {...clicked, index, isFlipped: clickedStatus }];
         setSelectedCards(newSelectedCards);
 
@@ -78,9 +72,7 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
 
         if (newSelectedCards[0].id === newSelectedCards[1].id) {
             setCurrentScore(currentScore + 1);
-            console.log('score+1')
         } else {
-            console.log('id가 다를 때 newSelectedCards: ', newSelectedCards)
             setTimeout(() => {
                 const resetCard = finalArr.map(item => {
                     if (newSelectedCards.some(selected => selected.id === item.id && selected.isFlipped)) {
@@ -96,7 +88,6 @@ function GameContainer({ currentLevel, setCurrentLevel, handleLevelChange, curre
     };
 
     useEffect(() => {
-        console.log('selectedCards: ', selectedCards);
     }, [selectedCards]);
 
     return (

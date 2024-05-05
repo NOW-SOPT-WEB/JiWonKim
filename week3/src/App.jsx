@@ -14,7 +14,7 @@ function App() {
   const [reset, setReset] = useState(false);
 
   const clickedReset = () => {
-    setReset(prev => !prev); // 기존 상태를 반전시켜 변경을 유발
+    setReset(prev => !prev); 
 };
 
   const handleLevelChange = (level) => {
@@ -26,10 +26,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <div>
+      <main>
         <Header currentScore={currentScore} maxScore={maxScore} clickedReset={clickedReset} />
         <Main currentLevel={currentLevel} setCurrentLevel={setCurrentLevel} handleLevelChange={handleLevelChange} currentScore={currentScore} setCurrentScore={setCurrentScore} maxScore={maxScore} setMaxScore={setMaxScore} reset={reset}/>
-      </div>
+      </main>
       
     </ThemeProvider>
   );

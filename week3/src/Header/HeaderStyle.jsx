@@ -4,7 +4,7 @@ export const HeaderContainer = styled.div`
     width: 100%;
     height: auto;
     padding-top: 10px;
-    background-color: ${props => props.theme.colors.lightColor};
+    background-color: ${({theme}) => theme.colors.lightColor};
 `
 
 export const GameTitle = styled.h1`
@@ -15,7 +15,7 @@ export const GameTitle = styled.h1`
     align-items: center;
     margin: 0;
     font-size: 50px;
-    color: ${props => props.theme.colors.mainColor};
+    color: ${({theme}) => theme.colors.mainColor};
 `;
 
 export const ScoreContainer = styled.div`
@@ -29,7 +29,7 @@ export const ScoreContainer = styled.div`
 export const GameScore = styled.h3`
     margin: 0px 10px 20px 10px;
     font-size: 40px;
-    color: ${props => props.theme.colors.mainColor};
+    color: ${({theme}) => theme.colors.mainColor};
 `;
 
 export const GameResetBtn = styled.button`
@@ -39,7 +39,7 @@ export const GameResetBtn = styled.button`
     width: 100px;
     height: 50px;
     font-size: 20px;
-    background-color: ${(props) => props.theme.colors.highlightColor};
+    background-color: ${({theme}) => theme.colors.highlightColor};
     border: none;
     border-radius: 10px;
     cursor: pointer;
