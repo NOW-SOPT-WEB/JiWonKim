@@ -5,13 +5,13 @@ export const GameLevelBtnContainer = styled.div`
 `;
 
 export const GameLevelBtn = styled.button`
-    width: 100px;
-    height: 50px;
-    margin: 20px;
-    font-size: 20px;
+    width: 6.25rem;
+    height: 3.125rem;
+    margin: 1.25rem;
+    font-size: 1.25rem;
     background-color: ${(props) => props.isActive ? props.theme.colors.highlightColor : props.theme.colors.lightColor};
     border: none;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     cursor: pointer;
 `;
 
@@ -20,7 +20,7 @@ export const CardContainer = styled.div`
     flex-flow: row wrap;
     width: 100%;
     justify-content: center;
-    margin: 50px 100px;
+    margin: 3.125rem 6.25rem;
 `;
 
 export const CardImg = styled.img`
@@ -30,10 +30,10 @@ export const CardImg = styled.img`
 `;
 
 export const StyleCard = styled.div`
-    width: 100px;
-    height: 150px;
+    width: 6.25rem;
+    height: 9.375rem;
     display: flex;
-    margin: 20px;
+    margin: 1.25rem;
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -57,8 +57,8 @@ export const CardFront = styled.div`
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border: 2px solid lightgray;
-    border-radius: 10px;
+    border: 0.125rem solid lightgray;
+    border-radius: 0.625rem;
 `;
 
 export const CardBack = styled(CardFront)`
@@ -81,13 +81,13 @@ export const ModalStyle = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 1;
-    font-size: 50px;
+    font-size: 3.125rem;
 `;
 
 export const ModalContentStyle = styled.div`
     background: ${({theme}) => theme.colors.lightColor};
-    padding: 20px;
-    border-radius: 10px;
+    padding: 1.25rem;
+    border-radius: 0.625rem;
     text-align: center;
     width: 50%;  
     height: 30%; 

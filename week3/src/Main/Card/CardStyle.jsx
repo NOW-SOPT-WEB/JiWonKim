@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const StyleCard = styled.div`
-    width: 100px;
-    height: 150px;
+    width: 6.25rem;
+    height: 9.375rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px;
+    margin: 1.25rem;
     overflow: hidden;
     background-color: ${({theme}) => theme.colors.mainColor};
-    border: 2px solid ${props => props.isFlipped ? 'black' : 'lightgray'};
-    border-radius: 10px;
+    border: 0.125rem solid ${props => props.isFlipped ? 'black' : 'lightgray'};
+    border-radius: 0.625rem;
 `;
