@@ -4,6 +4,7 @@ import GameLevelButtons from "./GameLevelButton/GameLevelBtn";
 import CardContainer from "./Card/CardContainer";
 import cardData from "./Card/CardData";
 import gameLevel from "./LevelData";
+import * as C from "../constants/constant"
 import * as S from './GameStyle'
 
 function GameContainer({ currentLevel, handleCurrentLevel, handleLevelChange, currentScore, handleCurrentScore, maxScore, handleMaxScore, reset}) {
@@ -11,11 +12,15 @@ function GameContainer({ currentLevel, handleCurrentLevel, handleLevelChange, cu
     const [selectedCards, setSelectedCards] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
+    const randomShuffle = (arr) => {
+        return arr.sort(() => Math.random() - C.SHUFFLE_HELP_NUM);
+    }
+
     const getCardSets = () => {
         const cardNum = gameLevel.find(item => item.level === currentLevel).cardNum;
-        const randomArr = cardData.sort(() => Math.random() - 0.5);
+        const randomArr = randomShuffle(cardData);
         const selectRamdomArr = randomArr.slice(0, cardNum);
-        const finalArr = [...selectRamdomArr, ...selectRamdomArr].sort(() => Math.random() - 0.5);
+        const finalArr = randomShuffle([...selectRamdomArr, ...selectRamdomArr]);
         finalArr.forEach(card => {
             card.isFlipped = false;
         });
@@ -78,7 +83,7 @@ function GameContainer({ currentLevel, handleCurrentLevel, handleLevelChange, cu
 
         const clicked = finalArr[index]
         const clickedStatus = !clicked.isFlipped;
-        const newSelectedCards = [...selectedCards, {...clicked, index, isFlipped: clickedStatus }];
+        const newSelectedCards = [...selectedCards, {...clicked, isFlipped: clickedStatus }];
         setSelectedCards(newSelectedCards);
 
         getFinalArr(index)

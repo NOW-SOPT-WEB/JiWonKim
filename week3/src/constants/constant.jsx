@@ -1,0 +1,1 @@
+export const SHUFFLE_HELP_NUM = 0.5
