@@ -74,7 +74,7 @@ function GameContainer({ currentLevel, handleCurrentLevel, handleLevelChange, cu
     }
 
     const handleCardClick = (card, index) => {
-        if (selectedCards.length === 2) return;
+        if (selectedCards.length === 2 || card.isFlipped) return;
 
         const clicked = finalArr[index]
         const clickedStatus = !clicked.isFlipped;
