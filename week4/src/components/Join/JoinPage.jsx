@@ -57,8 +57,10 @@ export default function JoinPage() {
         }
 
         if (valid) {
-          join(id, password, nickname, phoneNumer);
-          navigateToLogin();
+          const successJoin = join(id, password, nickname, phoneNumer);
+          if (successJoin) {
+            navigateToLogin();
+          }
         }
   }
 
