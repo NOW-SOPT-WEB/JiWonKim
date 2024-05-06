@@ -2,17 +2,17 @@ import * as C from '../CommonStyle';
 import { useState, useRef } from 'react';
 import { useNavigation } from '../../utils/navigation';
 import { join } from '../../services/Join';
-import { RegExpConfig } from '../../utils/regexConfig';
+import { RegExpConfig, formatPhoneNumber } from '../../utils/regexConfig';
 
 export default function JoinPage() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
-  const [phoneNumer, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [idError, setIdError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [nicknameError, setNicknameError] = useState('');
-  const [phoneNumerError, setPhoneNumberError] = useState('');
+  const [phoneNumberError, setPhoneNumberError] = useState('');
   const { goBack, navigateToLogin } = useNavigation();
 
   const idRef = useRef(null);
@@ -48,7 +48,7 @@ export default function JoinPage() {
           setNicknameError('');
         }
 
-        if (!phoneNumer || !RegExpConfig.phoneRegExp.test(phoneNumer)) {
+        if (!phoneNumber || !RegExpConfig.phoneRegExp.test(phoneNumber)) {
           setPhoneNumberError('전화번호 형식은 010-****-**** 입니다.');
             valid = false;
             phoneNumbersRef.current.focus();
@@ -60,6 +60,10 @@ export default function JoinPage() {
           join(id, password, nickname, phoneNumer);
           navigateToLogin();
         }
+  }
+
+  const handleChangePhoneNumber = (e) => {
+    setPhoneNumber(formatPhoneNumber(e.target.value));
   }
 
   return (
@@ -82,9 +86,9 @@ export default function JoinPage() {
         {nicknameError && <div style={{ color: 'red' }}>{nicknameError}</div>}
         <C.InputSection>
           <C.InputType>PhoneNumber</C.InputType>
-          <C.InputBox type="text" value={phoneNumer} onChange={(e) => setPhoneNumber(e.target.value)} error={phoneNumerError} ref={phoneNumbersRef} />
+          <C.InputBox type="text" value={phoneNumber} onChange={handleChangePhoneNumber} error={phoneNumberError} ref={phoneNumbersRef} />
         </C.InputSection>
-        {phoneNumerError && <div style={{ color: 'red' }}>{phoneNumerError}</div>}
+        {phoneNumberError && <div style={{ color: 'red' }}>{phoneNumberError}</div>}
 
         <C.BtnContainer>
           <C.Btn onClick={handleJoin}>회원가입</C.Btn>
