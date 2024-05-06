@@ -31,8 +31,8 @@ export default function LoginPage() {
 
         if (valid) {
           login(id, password, (value) => {
-            const userId = value;
-            navigateToInfo(userId);
+            const memberId = value;
+            navigateToInfo(memberId);
           });
         }
   }

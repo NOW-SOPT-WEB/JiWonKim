@@ -16,7 +16,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/join" element={<JoinPage />} />
-          <Route path="/info/:userId" element={<MyPage />} />
+          <Route path="/info/:memberId" element={<MyPage />} />
         </Routes>
     </Router>
     </ThemeProvider>

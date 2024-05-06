@@ -15,8 +15,8 @@ export function useNavigation() {
         navigate('/login');
     }
 
-    const navigateToInfo = (userId) => {
-        navigate(`/info/${userId}`);
+    const navigateToInfo = (memberId) => {
+        navigate(`/info/${memberId}`);
     }
 
     return { goBack, navigateToJoin, navigateToLogin, navigateToInfo };
