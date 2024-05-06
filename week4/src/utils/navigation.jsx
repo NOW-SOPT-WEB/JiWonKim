@@ -7,6 +7,10 @@ export function useNavigation() {
         navigate(-1);
     }
 
+    const goHome = () => {
+        navigate('/');
+    }
+
     const navigateToJoin = () => {
         navigate('/join');
     }
@@ -19,5 +23,5 @@ export function useNavigation() {
         navigate(`/info/${memberId}`);
     }
 
-    return { goBack, navigateToJoin, navigateToLogin, navigateToInfo };
+    return { goBack, goHome, navigateToJoin, navigateToLogin, navigateToInfo };
 }
