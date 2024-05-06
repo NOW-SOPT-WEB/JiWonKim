@@ -1,8 +1,15 @@
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from './style/GlobalStyle';
+import { theme } from './style/theme';
+
 function App() {
   return (
-    <>
-      <p>4주차 과제</p>
-    </>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <>
+       ㅎㅇㅎㅇ 
+      </>
+    </ThemeProvider>
   )
 }
 
