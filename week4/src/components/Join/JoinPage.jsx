@@ -1,5 +1,5 @@
 import * as C from '../CommonStyle';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigation } from '../../utils/navigation';
 import { join } from '../../services/Join';
 import { RegExpConfig } from '../../utils/regexConfig';
@@ -15,6 +15,11 @@ export default function JoinPage() {
   const [phoneNumerError, setPhoneNumberError] = useState('');
   const { goBack, navigateToLogin } = useNavigation();
 
+  const idRef = useRef(null);
+  const passwordRef = useRef(null);
+  const nicknameRef = useRef(null);
+  const phoneNumbersRef = useRef(null);
+
   const handleJoin = (e) => {
     e.preventDefault();
         let valid = true;
@@ -22,6 +27,7 @@ export default function JoinPage() {
         if (!id) {
             setIdError('아이디를 입력해주세요.');
             valid = false;
+            idRef.current.focus();
         } else {
             setIdError('');
         }
@@ -29,6 +35,7 @@ export default function JoinPage() {
         if (!password || !RegExpConfig.pwRegExp.test(password)) {
             setPasswordError('비밀번호 형식은 8자 이상, 숫자, 특수문자, 영어가 포함되어야 합니다.');
             valid = false;
+            passwordRef.current.focus();
         } else {
             setPasswordError('');
         }
@@ -36,6 +43,7 @@ export default function JoinPage() {
         if (!nickname) {
           setNicknameError('닉네임을 입력해주세요.');
             valid = false;
+            nicknameRef.current.focus();
         } else {
           setNicknameError('');
         }
@@ -43,6 +51,7 @@ export default function JoinPage() {
         if (!phoneNumer || !RegExpConfig.phoneRegExp.test(phoneNumer)) {
           setPhoneNumberError('전화번호 형식은 010-****-**** 입니다.');
             valid = false;
+            phoneNumbersRef.current.focus();
         } else {
           setPhoneNumberError('');
         }
@@ -58,22 +67,22 @@ export default function JoinPage() {
         <h1>Join</h1>
         <C.InputSection>
           <C.InputType>ID</C.InputType>
-          <C.InputBox type="text" value={id} onChange={(e) => setId(e.target.value)} />
+          <C.InputBox type="text" value={id} onChange={(e) => setId(e.target.value)} error={idError} ref={idRef} />
         </C.InputSection>
         {idError && <div style={{ color: 'red' }}>{idError}</div>}
         <C.InputSection>
           <C.InputType>PW</C.InputType>
-          <C.InputBox type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <C.InputBox type="text" value={password} onChange={(e) => setPassword(e.target.value)} error={passwordError} ref={passwordRef} />
         </C.InputSection>
         {passwordError && <div style={{ color: 'red' }}>{passwordError}</div>}
         <C.InputSection>
           <C.InputType>NickName</C.InputType>
-          <C.InputBox type="text" value={nickname} onChange={(e) => setNickname(e.target.value)} />
+          <C.InputBox type="text" value={nickname} onChange={(e) => setNickname(e.target.value)} error={nicknameError} ref={nicknameRef} />
         </C.InputSection>
         {nicknameError && <div style={{ color: 'red' }}>{nicknameError}</div>}
         <C.InputSection>
           <C.InputType>PhoneNumber</C.InputType>
-          <C.InputBox type="text" value={phoneNumer} onChange={(e) => setPhoneNumber(e.target.value)} />
+          <C.InputBox type="text" value={phoneNumer} onChange={(e) => setPhoneNumber(e.target.value)} error={phoneNumerError} ref={phoneNumbersRef} />
         </C.InputSection>
         {phoneNumerError && <div style={{ color: 'red' }}>{phoneNumerError}</div>}
 

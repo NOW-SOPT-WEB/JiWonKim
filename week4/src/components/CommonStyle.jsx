@@ -47,5 +47,6 @@ export const InputType = styled.h3`
 `;
 
 export const InputBox = styled.input`
-    
+    border: 1px solid ${({error}) => (error ? 'red' : 'transparent')};
+    outline: none;
 `;
