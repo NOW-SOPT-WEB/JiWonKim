@@ -34,3 +34,18 @@ cursor: pointer;
     border: 2px solid gray;
 }
 `;
+
+export const InputSection = styled.section`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+`;
+
+export const InputType = styled.h3`
+    
+`;
+
+export const InputBox = styled.input`
+    
+`;
