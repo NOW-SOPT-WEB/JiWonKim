@@ -1,10 +1,9 @@
 export const theme = {
     colors: {
-        mainColor: '#F875AA',
-        lightColor: '#FFDFDF',
-        backgroundColor: '#FFF6F6',
-        highlightColor: '#AEDEFC',
-        textColor: '#45454D'
+        mainColor: '#798777',
+        lightColor: '#A2B29F',
+        backgroundColor: '#F8EDE3',
+        highlightColor: '#BDD2B6',
     },
     fonts: {
       main: 'Helvetica, Arial, sans-serif',
