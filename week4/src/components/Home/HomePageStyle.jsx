@@ -23,24 +23,3 @@ export const MainImg = styled.img`
 width: 500px;
 margin: 50px;
 `;
-
-export const BtnContainer = styled.section`
-display: flex;
-justify-content: center;
-gap: 50px;
-margin-bottom: 50px;
-`;
-
-export const MainBtn = styled.button`
-width: 120px;
-height: 60px;
-background-color: ${({theme}) => theme.colors.lightColor};
-border: none;
-border-radius: 10px;
-font-size: 20px;
-cursor: pointer;
-
-&:hover {
-    border: 2px solid gray;
-}
-`;

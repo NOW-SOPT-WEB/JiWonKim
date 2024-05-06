@@ -2,9 +2,9 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './style/GlobalStyle';
 import { theme } from './style/theme';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MainPage from './MainPage/MainPage';
-import LoginPage from './Login/LoginPage';
-import JoinPage from './Join/JoinPage';
+import MainPage from './components/Home/HomePage';
+import LoginPage from './components/Login/LoginPage';
+import JoinPage from './components/Join/JoinPage';
 
 function App() {
   return (

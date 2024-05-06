@@ -1,4 +1,5 @@
-import * as S from './MainPageStyle';
+import * as S from './HomePageStyle';
+import * as C from '../CommonStyle';
 import { useNavigate  } from "react-router-dom";
 
 export default function MainPage() {
@@ -16,13 +17,13 @@ export default function MainPage() {
     return (
         <S.Main>
             <S.Header>
-                <h1>header ㅎㅇㅎㅇ</h1>
+                <h1>로그인 / 회원가입</h1>
             </S.Header>
             <S.MainImg src="./src/assets/잠만보.jpg"/>
-            <S.BtnContainer>
-                <S.MainBtn onClick={handleNavigateToLogin}>내 정보</S.MainBtn>
-                <S.MainBtn onClick={handleNavigateToJoin}>회원가입</S.MainBtn>
-            </S.BtnContainer>
+            <C.BtnContainer>
+                <C.Btn onClick={handleNavigateToLogin}>내 정보</C.Btn>
+                <C.Btn onClick={handleNavigateToJoin}>회원가입</C.Btn>
+            </C.BtnContainer>
         </S.Main>
     )
 }
