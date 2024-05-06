@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API } from '../config'
+import { API } from '../../utils/config'
 
 
 export function login(id, password) {

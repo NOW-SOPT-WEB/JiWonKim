@@ -2,12 +2,14 @@ import * as S from './LoginPageStyle'
 import * as C from '../CommonStyle';
 import { useState } from 'react';
 import { login } from './Login';
+import { useNavigation } from '../../utils/navigation';
 
 export default function LoginPage() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [idError, setIdError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const { navigateToJoin } = useNavigation();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -32,10 +34,6 @@ export default function LoginPage() {
         }
   }
 
-  const handleJoin = () => {
-
-  }
-
   return (
     <>
     <C.PageContainer>
@@ -54,7 +52,7 @@ export default function LoginPage() {
 
         <C.BtnContainer>
           <C.Btn onClick={handleLogin}>로그인</C.Btn>
-          <C.Btn onClick={handleJoin}>회원가입</C.Btn>
+          <C.Btn onClick={navigateToJoin}>회원가입</C.Btn>
         </C.BtnContainer>
     </C.PageContainer>
     </>
