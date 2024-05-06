@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './components/Home/HomePage';
 import LoginPage from './components/Login/LoginPage';
 import JoinPage from './components/Join/JoinPage';
+import MyPage from './components/MyPage/MyPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/join" element={<JoinPage />} />
+          <Route path="/info/:userId" element={<MyPage />} />
         </Routes>
     </Router>
     </ThemeProvider>

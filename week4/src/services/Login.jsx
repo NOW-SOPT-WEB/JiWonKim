@@ -2,13 +2,14 @@ import axios from 'axios';
 import { API } from '../utils/apiConfig';
 
 
-export function login(authenticationId, password) {
+export function login(authenticationId, password, LoginSuccess) {
     axios.post(API.LOGIN, {
       authenticationId,
       password
     })
     .then(response => {
-      console.log('login success: ', response);
+      const locationHeader = response.headers.location;
+      LoginSuccess(locationHeader);
     })
     .catch(error => {
       console.log('login fail: ', error);

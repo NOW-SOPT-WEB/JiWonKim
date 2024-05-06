@@ -9,7 +9,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [idError, setIdError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const { navigateToJoin } = useNavigation();
+  const { navigateToJoin, navigateToInfo } = useNavigation();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -30,7 +30,10 @@ export default function LoginPage() {
         }
 
         if (valid) {
-          login(id, password);
+          login(id, password, (value) => {
+            const userId = value;
+            navigateToInfo(userId);
+          });
         }
   }
 
@@ -46,7 +49,7 @@ export default function LoginPage() {
         {idError && <div style={{ color: 'red' }}>{idError}</div>}
         <C.InputSection>
           <C.InputType>PW</C.InputType>
-          <C.InputBox type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <C.InputBox type="text" value={password} onChange={(e) => setPassword(e.target.value)} />
         </C.InputSection>
         {passwordError && <div style={{ color: 'red' }}>{passwordError}</div>}
 
