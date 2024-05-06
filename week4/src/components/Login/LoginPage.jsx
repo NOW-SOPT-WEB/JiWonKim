@@ -6,9 +6,30 @@ import { login } from './Login';
 export default function LoginPage() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
+  const [idError, setIdError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
-  const handleLogin = () => {
-    login(id, password)
+  const handleLogin = (e) => {
+    e.preventDefault();
+        let valid = true;
+
+        if (!id) {
+            setIdError('아이디를 입력해주세요.');
+            valid = false;
+        } else {
+            setIdError('');
+        }
+
+        if (!password) {
+            setPasswordError('비밀번호를 입력해주세요.');
+            valid = false;
+        } else {
+            setPasswordError('');
+        }
+
+        if (valid) {
+          login(id, password);
+        }
   }
 
   const handleJoin = () => {
@@ -24,10 +45,12 @@ export default function LoginPage() {
           <S.InputType>ID</S.InputType>
           <S.InputBox type="text" value={id} onChange={(e) => setId(e.target.value)} />
         </S.InputSection>
+        {idError && <div style={{ color: 'red' }}>{idError}</div>}
         <S.InputSection>
           <S.InputType>PW</S.InputType>
           <S.InputBox type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </S.InputSection>
+        {passwordError && <div style={{ color: 'red' }}>{passwordError}</div>}
 
         <C.BtnContainer>
           <C.Btn onClick={handleLogin}>로그인</C.Btn>
