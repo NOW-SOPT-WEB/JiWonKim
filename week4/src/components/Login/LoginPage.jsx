@@ -1,8 +1,8 @@
 import * as S from './LoginPageStyle'
 import * as C from '../CommonStyle';
 import { useState } from 'react';
-import { login } from './Login';
 import { useNavigation } from '../../utils/navigation';
+import { login } from '../../services/Login';
 
 export default function LoginPage() {
   const [id, setId] = useState('');
@@ -39,15 +39,15 @@ export default function LoginPage() {
     <C.PageContainer>
         <h1>Login</h1>
         <S.LoginPageImg src='./src/assets/잠만보.jpg'></S.LoginPageImg>
-        <S.InputSection>
-          <S.InputType>ID</S.InputType>
-          <S.InputBox type="text" value={id} onChange={(e) => setId(e.target.value)} />
-        </S.InputSection>
+        <C.InputSection>
+          <C.InputType>ID</C.InputType>
+          <C.InputBox type="text" value={id} onChange={(e) => setId(e.target.value)} />
+        </C.InputSection>
         {idError && <div style={{ color: 'red' }}>{idError}</div>}
-        <S.InputSection>
-          <S.InputType>PW</S.InputType>
-          <S.InputBox type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </S.InputSection>
+        <C.InputSection>
+          <C.InputType>PW</C.InputType>
+          <C.InputBox type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </C.InputSection>
         {passwordError && <div style={{ color: 'red' }}>{passwordError}</div>}
 
         <C.BtnContainer>

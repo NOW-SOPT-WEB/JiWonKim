@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { API } from '../../utils/config'
+import { API } from '../utils/apiConfig';
 
 
-export function login(id, password) {
+export function login(authenticationId, password) {
     axios.post(API.LOGIN, {
-      id,
+      authenticationId,
       password
     })
     .then(response => {

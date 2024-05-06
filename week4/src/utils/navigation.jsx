@@ -3,13 +3,17 @@ import { useNavigate } from 'react-router-dom';
 export function useNavigation() {
     const navigate = useNavigate();
 
-    function navigateToJoin() {
+    const goBack = () => {
+        navigate(-1);
+    }
+
+    const navigateToJoin = () => {
         navigate('/join');
     }
 
-    function navigateToLogin() {
+    const navigateToLogin = () => {
         navigate('/login');
     }
 
-    return { navigateToJoin, navigateToLogin };
+    return { goBack, navigateToJoin, navigateToLogin };
 }
