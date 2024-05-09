@@ -9,7 +9,7 @@ export function changePassword(previousPassword, newPassword, newPasswordVerific
         newPasswordVerification
     }, {
         headers: {
-            memberId: 1
+            memberId: memberId
         }
     })
     .then(response => {
@@ -18,7 +18,7 @@ export function changePassword(previousPassword, newPassword, newPasswordVerific
     })
     .catch(error => {
       console.log('changePassword fail: ', error);
-      alert('비밀번호 변경 실패: ' + error.response.data.message);
+      alert('비밀번호 변경 실패: ' + error.response.data.message + previousPassword);
     })
   }
   
